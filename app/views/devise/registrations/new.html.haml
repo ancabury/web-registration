@@ -1,0 +1,4 @@
+.authform
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
+    = render partial: 'first_page', locals: { f: f }
+    = render partial: "next_page", locals: { f: f }

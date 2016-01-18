@@ -1,0 +1,10 @@
+.container
+  .row
+    = link_to "Sign out", destroy_user_session_path, method: :delete
+  .row
+    %h3 Users
+    .column
+      %table.table
+        %tbody
+          - @users.each do |user|
+            %tr= render user

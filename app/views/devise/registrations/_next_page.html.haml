@@ -1,0 +1,16 @@
+.additional-info
+  %h3 User infos
+  .form-group
+    = f.label :sex, 'male'
+    = f.radio_button :sex, 'male'
+    = f.label :sex, 'female'
+    = f.radio_button :sex, 'female'
+    = f.hidden_field :sex, value: ""
+  .form-group
+    = f.label :phone
+    = f.text_field :phone, :autofocus => true, class: 'form-control'
+  .form-group
+    = f.label :address
+    = f.text_field :address, :autofocus => true, class: 'form-control'
+
+  = f.submit 'Sign up', :class => 'button right'

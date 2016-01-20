@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:check]
 
   def index
     @users = User.all
@@ -12,4 +12,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def check
+    user = User.find_by(email: params[:email])
+
+    if user
+      content =  '<div class="text-danger">
+                  There is a user with this email in the database.
+                </div>'
+    else
+      content = ''
+    end
+    respond_to do |format|
+      format.js { render json: { content: content }}
+    end
+  end
 end

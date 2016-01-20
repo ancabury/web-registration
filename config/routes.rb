@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     registrations: "registrations"
   }
   resources :users
+  get :check, to: 'users#check'
 end

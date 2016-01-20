@@ -22,4 +22,29 @@ $(document).ready(function() {
     $('.additional-info').css({'display':'block'})
     $('.base-information').css({'display':'none'})
   });
+
+  $('.back').click(function(){
+    $('.additional-info').css({'display':'none'})
+    $('.base-information').css({'display':'block'})
+  });
+
+  $('#user_email').focusout(function(){
+    var user_email = $(this).val();
+    $.ajax({
+      type: 'GET',
+      url: '/check',
+      dataType: 'json',
+      data: $.param({ email: user_email }),
+      success: function(data){
+        console.log("done");
+        console.log(data.content);
+        $('#user_email').parent().append(data.content);
+      },
+       error: function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log(XMLHttpRequest.responseText);
+        console.log(textStatus);
+        console.log(errorThrown);
+      }
+    })
+  });
 });

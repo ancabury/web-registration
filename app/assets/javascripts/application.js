@@ -28,6 +28,10 @@ $(document).ready(function() {
     $('.base-information').css({'display':'block'})
   });
 
+  $('#user_email').keypress(function(){
+    $('.text-danger').remove();
+  });
+
   $('#user_email').focusout(function(){
     var user_email = $(this).val();
     $.ajax({
